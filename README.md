@@ -1,24 +1,19 @@
 # Business Listings Dashboard
 
-## Project Overview
-
-This project is a full-stack Business Listings Dashboard developed using React.js, FastAPI, and MySQL.
-
-The application scrapes business listing data, stores it in a MySQL database, and displays useful insights through charts and tables.
+A full-stack web application built using **React.js**, **FastAPI**, and **MySQL**. The application stores business listings in a MySQL database and displays business information using charts and tables.
 
 ---
 
 ## Features
 
-- Dashboard Summary Cards
-- Search Business by City
-- City-wise Business Count
-- Category-wise Business Count
-- Source-wise Business Count
-- Charts using Recharts
+- Search businesses by city
+- City-wise business count
+- Category-wise business count
+- Source-wise business count
+- Dashboard summary cards
+- Interactive charts
+- MySQL database integration
 - FastAPI REST APIs
-- MySQL Database Integration
-- Web Scraping using BeautifulSoup
 
 ---
 
@@ -32,6 +27,7 @@ The application scrapes business listing data, stores it in a MySQL database, an
 ### Backend
 - FastAPI
 - SQLAlchemy
+- Uvicorn
 
 ### Database
 - MySQL
@@ -42,17 +38,17 @@ The application scrapes business listing data, stores it in a MySQL database, an
 
 ---
 
-## Project Structure
+## Folder Structure
 
 ```
-Business-Listings-Dashboard
+Business-Listings-Dashboard/
 │
-├── backend
-├── frontend
-├── scraper
-├── database
-├── Data
-├── docs
+├── backend/
+├── frontend/
+├── scraper/
+├── database/
+├── Data/
+├── docs/
 └── README.md
 ```
 
@@ -60,13 +56,15 @@ Business-Listings-Dashboard
 
 ## API Endpoints
 
-| API | Description |
-|------|-------------|
-| /dashboard-summary | Dashboard Cards |
-| /city-count | City-wise Count |
-| /category-count | Category-wise Count |
-| /source-count | Source-wise Count |
-| /search?city=Boston | Search Businesses |
+| Method | Endpoint |
+|---------|----------|
+| GET | / |
+| GET | /businesses |
+| GET | /search?city=CityName |
+| GET | /city-count |
+| GET | /category-count |
+| GET | /source-count |
+| GET | /dashboard-summary |
 
 ---
 
@@ -76,6 +74,7 @@ Business-Listings-Dashboard
 
 ```bash
 cd backend
+pip install -r requirements.txt
 uvicorn app:app --reload
 ```
 
@@ -89,27 +88,28 @@ npm run dev
 
 ---
 
-## Database
+## Dashboard Screenshots
 
-MySQL
+### Dashboard
 
-Table Name:
+![Dashboard](docs/dashboard_home.png)
 
-```
-listing_master
-```
+### City Wise Chart
 
----
+![City Chart](docs/city_chart.png)
 
-## Challenges Faced
+### Source Wise Chart
 
-- Scraping a large amount of business data
-- Cleaning duplicate records
-- Connecting FastAPI with MySQL
-- Displaying dashboard data using charts
+![Source Chart](docs/source_chart.png)
+
+### Category Wise Chart
+
+![Category Chart](docs/category_chart.png)
 
 ---
 
 ## Author
 
-Anubhav Shukla
+**Anubhav Shukla**
+
+GitHub: https://github.com/Anubhav-shukla05

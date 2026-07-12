@@ -49,21 +49,20 @@ function App() {
   }, []);
 
   const searchCity = () => {
+  axios
+    .get(`http://127.0.0.1:8000/search?city=${city}`)
+    .then((response) => {
+      console.log(response.data);
+      setSearchResult(response.data);
 
-    axios
-      .get(`http://127.0.0.1:8000/search?city = ${city}`)
-      .then((response) => {
-
-        setSearchResult(response.data);
-
-        if (response.data.length === 0) {
-          alert("No Business Found");
-        }
-
-      });
-
-  };
-
+      if (response.data.length === 0) {
+        alert("No Business Found");
+      }
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+};
 return (
   <div
     style = {{
