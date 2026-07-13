@@ -2,7 +2,7 @@ from fastapi import FastAPI, Query
 from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy.orm import Session
 from sqlalchemy import func
-
+from pydantic import BaseModel
 from backend.database import SessionLocal
 from backend.models import BusinessListing
 
@@ -15,7 +15,15 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+class BusinessCreate(BaseModel):   #request model
+    business_name: str
+    category: str
+    city: str
+    address: str
+    phone: str
+    source: str
 
+    
 @app.get("/")
 def home():
     return {
@@ -30,6 +38,31 @@ def get_businesses():
 
     db.close()
     return businesses
+
+@app.post("/insert-listing")
+def insert_listing(data: BusinessCreate):
+
+    db = SessionLocal()
+
+    business = BusinessListing(
+        business_name=data.business_name,
+        category=data.category,
+        city=data.city,
+        address=data.address,
+        phone=data.phone,
+        source=data.source,
+    )
+
+    db.add(business)
+    db.commit()
+    db.refresh(business)
+
+    db.close()
+
+    return {
+        "message": "Business inserted successfully",
+        "id": business.id
+    }
 
 @app.get("/search")
 def search_business(city: str = Query(...)):
