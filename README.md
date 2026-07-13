@@ -1,19 +1,20 @@
 # Business Listings Dashboard
 
-A full-stack web application built using **React.js**, **FastAPI**, and **MySQL**. The application stores business listings in a MySQL database and displays business information using charts and tables.
+A full-stack web application built using **React.js**, **FastAPI**, and **MySQL**. The application collects business listings through web scraping, stores them in a MySQL database, and displays business insights using tables and charts.
 
 ---
 
 ## Features
 
+- Web scraping of business listings
 - Search businesses by city
+- Dashboard summary
 - City-wise business count
 - Category-wise business count
 - Source-wise business count
-- Dashboard summary cards
 - Interactive charts
+- Insert business using API
 - MySQL database integration
-- FastAPI REST APIs
 
 ---
 
@@ -38,7 +39,7 @@ A full-stack web application built using **React.js**, **FastAPI**, and **MySQL*
 
 ---
 
-## Folder Structure
+## Project Structure
 
 ```
 Business-Listings-Dashboard/
@@ -46,8 +47,8 @@ Business-Listings-Dashboard/
 ├── backend/
 ├── frontend/
 ├── scraper/
-├── database/
 ├── Data/
+├── database/
 ├── docs/
 └── README.md
 ```
@@ -56,21 +57,28 @@ Business-Listings-Dashboard/
 
 ## API Endpoints
 
-| Method | Endpoint |
-|---------|----------|
-| GET | / |
-| GET | /businesses |
-| GET | /search?city=CityName |
-| GET | /city-count |
-| GET | /category-count |
-| GET | /source-count |
-| GET | /dashboard-summary |
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | / | Home API |
+| GET | /businesses | Get business listings |
+| GET | /search?city=CityName | Search businesses by city |
+| GET | /city-count | City-wise business count |
+| GET | /category-count | Category-wise business count |
+| GET | /source-count | Source-wise business count |
+| GET | /dashboard-summary | Dashboard summary |
+| POST | /insert-listing | Insert a new business |
 
 ---
 
-## How to Run
+## Setup
 
-### Backend
+### Clone the Repository
+
+```bash
+git clone https://github.com/Anubhav-shukla05/Business-Listings-Dashboard.git
+```
+
+### Backend Setup
 
 ```bash
 cd backend
@@ -78,12 +86,24 @@ pip install -r requirements.txt
 uvicorn app:app --reload
 ```
 
-### Frontend
+Backend runs at:
+
+```
+http://127.0.0.1:8000
+```
+
+### Frontend Setup
 
 ```bash
 cd frontend
 npm install
 npm run dev
+```
+
+Frontend runs at:
+
+```
+http://localhost:5173
 ```
 
 ---
@@ -105,6 +125,15 @@ npm run dev
 ### Category Wise Chart
 
 ![Category Chart](docs/category_chart.png)
+
+---
+
+## Challenges Faced
+
+- Scraping and cleaning business listing data
+- Connecting FastAPI with MySQL
+- Building REST APIs
+- Displaying business data using charts
 
 ---
 
